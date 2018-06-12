@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config APP_XTRACT
+	bool "\"Main support application for the calculation of the xcorr"
+	default n
+	---help---
+		Enable to cross-correlate signal to extract useful information
+
+if APP_XTRACT
+
+config APP_XTRACT_PROGNAME
+	string "Program name"
+	default "xtract"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config APP_XTRACT_PRIORITY
+	int "Xtract application task priority"
+	default 100
+
+config APP_XTRACT_STACKSIZE
+	int "Xtract application stack size"
+	default 4096
+
+endif
